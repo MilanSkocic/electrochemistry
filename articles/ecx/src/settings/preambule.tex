@@ -1,0 +1,105 @@
+\usepackage[english]{babel}
+
+
+\usepackage[margin=2cm]{geometry}
+\usepackage{emptypage}
+
+\usepackage{float}
+\usepackage{graphicx} %insert images
+\usepackage{caption}
+\usepackage{subcaption}
+\graphicspath{{./}, {./src/figures/}}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{decorations.pathmorphing,arrows,calc,patterns,patterns.meta}
+
+\usepackage[backend=biber,
+bibstyle=ieee, 
+citestyle=numeric-comp,
+natbib=true,
+doi=false, 
+url=false,
+isbn=false,
+mincitenames=1,
+maxcitenames=1,
+minbibnames=1,
+maxbibnames=99,
+backref=false,]
+{biblatex}
+\addbibresource[label=main_bib]{./src/references.bib}
+	
+\usepackage{microtype}% better space management
+\usepackage[utf8]{inputenc}%utf encoding
+\usepackage[T1]{fontenc}
+
+\usepackage{fancyhdr} %custom headers and footers layout
+\usepackage{lastpage} %package to print the last page
+
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools} 
+\usepackage{mathastext}
+
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{csquotes}
+
+\usepackage[english]{nomencl}
+\makenomenclature
+\renewcommand{\nomgroup}[1]{%
+\ifthenelse{\equal{#1}{A}}{\item[\textbf{Acronyms}]}{%
+\ifthenelse{\equal{#1}{I}}{\item[\textbf{Indexes}]}{%
+\ifthenelse{\equal{#1}{C}}{\item[\textbf{Physical Constants}]}{%
+\ifthenelse{\equal{#1}{E}}{\item[\textbf{Electrochemistry}]}{%
+\ifthenelse{\equal{#1}{P}}{\item[\textbf{Photoelectrochemistry}]}%
+{}
+}% matches Subscripts
+}% matches Abbreviations
+}
+}
+}
+\usepackage{makeidx}
+\makeindex
+
+\newcommand{\Hyd}{$\rm H_2$}
+\newcommand{\Oxy}{$\rm O_2$}
+\newcommand{\Tkim}{\SI{300}{\degreeCelsius}}
+\newcommand{\E}{E}
+\newcommand{\SC}{sc}
+\newcommand{\cc}{cc}
+\newcommand{\iph}{I_{ph}}
+\newcommand{\ipht}{I_{ph}^{\ast}}
+\newcommand{\phase}{\theta}
+\newcommand{\Hm}{H}
+\newcommand{\el}{el}
+\newcommand{\DRe}{D^2_{Re}}
+\newcommand{\DIm}{D^2_{Im}}
+\newcommand{\ReIphtExp}{Re \, I_{ph,exp}^{\ast}}
+\newcommand{\ReIphtCalc}{Re \, I_{ph,calc}^{\ast}}
+\newcommand{\ImIphtExp}{Im \, I_{ph,exp}^{\ast}}
+\newcommand{\ImIphtCalc}{Im \, I_{ph,calc}^{\ast}}
+\newcommand{\ReIphExp}{Re \, I_{ph,exp}}
+\newcommand{\ReIphCalc}{Re \, I_{ph,calc}}
+\newcommand{\ImIphExp}{Im \, I_{ph,exp}}
+\newcommand{\ImIphCalc}{Im \, I_{ph,calc}}
+
+\newcommand{\modi}[1]{\vert #1 \vert}
+\newcommand{\sigmae}{\sigma _{exp}}
+\newcommand{\sigmap}{\sigma _{p}}
+\newcommand{\iphe}{I_{ph,exp}}
+\newcommand{\iphc}{I_{ph,calc}}
+\newcommand{\gradX}{\nabla \chi ^2}
+\newcommand{\je}{J _{\epsilon}}
+%\newcommand{\hv}{h  \nu}
+\newcommand{\tvp}{t_{dof,P}}
+\newcommand{\eps}{\epsilon}
+\newcommand{\epsp}{\epsilon ^{\prime}}
+\newcommand{\jep}{J _{\epsp}}
+\newcommand{\coef}{0.1}
+
+\newcommand{\hv}{h\nu}

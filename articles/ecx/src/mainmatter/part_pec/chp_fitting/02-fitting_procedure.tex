@@ -1,0 +1,72 @@
+\section{Fitting procedure}
+It should be reminded that the low photocurrents are extracted from the overall 
+electrochemical current using a modulation of the light illuminating the sample. 
+The modulation is obtained with a mechanical chopper placed on the optical path. 
+The reference signal of the modulation is connected to the external reference 
+input of a lock-in amplifier, whereas the current output is connected to the 
+signal input of the latter, allowing to measure both the modulus, 
+$\vert I_{ph} \vert$ , and the phase shift, $\theta$ of the so called 
+as-measured photocurrent, $I_{ph}$. Then, the latter is converted, at 
+each photon energy, in a more useful value, $I_{ph}^* (h\nu)$, proportional 
+to the quantum yield of the photocurrent, by dividing $I_{ph}(h\nu)$ 
+by $\Phi(h\nu)/\Phi_{max}$  , where $\Phi(h\nu)$ is the photon flux arriving 
+onto the sample, and $\Phi_{max}$ its maximum value. 
+
+As $I_{ph}^*$ is measured under modulated light conditions and thus actually 
+was a complex number, it was proposed that the real part $\Re I_{ph}^* $ 
+and the imaginary part $\Im I_{ph}^*$ of the photocurrent $I_{ph}^*$ should 
+be considered simultaneously when analyzing and fitting the photocurrent 
+energy spectra, rather than the modulus $\vert I_{ph}^* \vert$ only, as it 
+was the case up to now. 
+Therefore, the overall complex photocurrent, $I_{ph}^*$, was written as 
+shown in eq. \ref{eq:Iph_complex}.
+
+\begin{equation}
+\begin{split}
+I_{ph}^* &= \vert I_{ph}^* \vert \cdot \cos \theta + \imath \vert I_{ph}^* \vert \cdot \sin \theta \\
+I_{ph}^* &= \sum _i \vert I_{ph,i}^* \vert \cdot \cos \theta _i + \sum _i \vert I_{ph,i}^* \vert \cdot \sin \theta _i 
+\end{split}
+\label{eq:Iph_complex}
+\end{equation}
+
+\noindent where $\vert I_{ph,i}^* \vert$ and $\theta _i$ represent the modulus 
+and phase shift, respectively, of the photocurrent issued from the $i^{th}$ 
+semiconducting constituent of the oxide layer. For thin semiconducting films 
+such as those usually investigated in most corrosion studies, the space charge 
+regions are low compared to penetration depth of the light.  
+$\vert I_{ph,i}^* \vert$ may thus be expected, at a given applied potential, 
+to follow the simplified form of the Gärtner–Butler model, i.e. in fact to 
+obey to the eq. \ref{eq:model}.
+
+\begin{equation}
+\begin{split}
+\left( \vert I_{ph,i}^* \vert \cdot E \right)^{\frac{1}{n}} = K_i \cdot \left(  E - E_{g,i}  \right)
+\end{split}
+\label{eq:model}
+\end{equation}
+
+\noindent where $E_{g,i}$ and $K_i$ represent the energy gap and a proportionality 
+value, respectively. It should be emphasized that the as-defined 
+$\vert I_{ph,i}^* \vert$ is proportional to, but not equal, to the quantum 
+yield for the ith semiconducting constituent. $n$ depends on the band to band 
+transition type, $n = 1/2$ for an allowed direct transition, and $n = 2$ for 
+an allowed indirect transition. To our knowledge, the case where $n = 1/2$ 
+(direct transition) was rarely observed in the case of passive films or more 
+or less disordered thin oxide films.
+
+In addition, as the space charge regions are likely to extend over the whole 
+thickness of each phase in the oxide layer, it is assumed that the recombination 
+of the photogenerated electron---hole pairs, and thus the phase shifts, 
+$\theta _i$, will not depend on the photon energy.
+A given vector of $m$ $(E_{g,i}, K_i , \theta_i)$ triplets represents the s
+upposed number of semiconducting phases contributing to the photocurrent. 
+The scalar function, $D$, to be minimized is given in  eq. \ref{eq:D} which 
+represents a measurement of the distance between the experimental and calculated 
+data.
+
+\begin{equation}
+\begin{split}
+\left( \vert I_{ph,i}^* \vert \cdot E \right)^{\frac{1}{n}} = K_i \cdot \left(  E - E_{g,i}  \right)
+\end{split}
+\label{eq:D}
+\end{equation}

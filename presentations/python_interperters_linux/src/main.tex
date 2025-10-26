@@ -1,0 +1,164 @@
+\documentclass[10pt,compress]{beamer}
+    \useoutertheme{miniframes}
+    \usepackage[english]{babel}
+
+    \usepackage{amsmath}
+    \usepackage{amsfonts} 
+    \usepackage{amssymb}
+    \usepackage{amsthm}
+    \usepackage{mathtools}
+
+    \usepackage[utf8]{inputenc}
+
+    \usepackage{float}
+    \usepackage{graphicx}
+    \usepackage{caption}
+    \usepackage{subcaption}
+
+    \graphicspath{{./src/figures/}}
+
+    %\usepackage{fancyhdr} %custom headers and footers layout
+    \usepackage{lastpage} %package to print the last page
+    %\pagestyle{fancy} %fancy page style
+
+    \usepackage{textcomp} 
+    \usepackage{multicol} 
+    \usepackage{multirow}
+
+    \usepackage[table]{xcolor}
+    \usepackage{booktabs}
+
+    \usepackage[backend=biber,
+    bibstyle=ieee, 
+    citestyle=numeric-comp,
+    natbib=true,
+    doi=false, 
+    url=false,
+    isbn=false,
+    mincitenames=1,
+    maxcitenames=1,
+    minbibnames=1,
+    maxbibnames=99,
+    backref=false,]
+    {biblatex}
+    \addbibresource[label=main]{./src/references.bib}
+
+    \usepackage{url}
+    \usepackage{hyperref}
+
+    %\usetheme{metropolis}
+
+    %edit the properties of your PDF documents which will be displayed
+    \hypersetup{
+        bookmarks=true, 		% show bookmarks bar?
+        unicode=true,  		% non-Latin characters in Acrobat’s bookmarks
+        pdftoolbar=true,        % show Acrobat’s toolbar?
+        pdfmenubar=true,        % show Acrobat’s menu?
+        pdffitwindow=true,      % page fit to window when opened
+        pdftitle={},    % title
+        pdfauthor={M. Skocic},     % author
+        pdfsubject={},   % subject of the document
+        pdfnewwindow=true,      % links in new window
+        pdfkeywords={}, % list of keywords
+        colorlinks=false,       % false: boxed links; true: colored links
+        linkcolor=red,          % color of internal links
+        citecolor=green,        % color of links to bibliography
+        filecolor=magenta,      % color of file links
+        urlcolor=cyan           % color of external links
+    }
+
+    \usepackage{tikz}
+    \usepackage{circuitikz}
+    \usetikzlibrary{decorations.pathmorphing,arrows,calc}
+
+\title{Multiple Python interpreters on Linux}
+\author{M. Skocic}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\section{Dependencies}
+\begin{frame}{Required packages}
+    
+    \begin{alertblock}{Debian-based distributions}
+        \begin{semiverbatim}
+        {\small
+        \$ sudo apt-get install build-essential checkinstall
+        libreadline-dev libncursesw5-dev libssl-dev 
+        libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev
+        zlib1g-dev liblzma-dev libgdbm-compact-dev libnsl-dev}
+        \end{semiverbatim}
+    \end{alertblock}
+
+    \begin{alertblock}{Other distributions}
+        Please refer to your distribution documentation for finding the 
+        equivalent packages.
+    \end{alertblock}
+
+\end{frame}
+
+
+\section{Build}
+\begin{frame}{Compilation}
+    \begin{alertblock}{Example with Python 3.13}
+        \begin{semiverbatim}
+            {\small
+
+            \$ wget https://www.python.org/ftp/python/3.13.0/python-3.13.0.tgz
+            
+            \$ tar -xvf python-3.13.0.tgz
+            
+            \$ cd python-3.13.0
+
+            \$ sudo ./configure --enable-optimizations
+
+            \$ make
+
+            \$ sudo make altinstall
+            }
+        \end{semiverbatim}
+    \end{alertblock}
+    
+    \begin{alertblock}{Free threaded with Python 3.14}
+        Python 3.14 allows to disable the GIL.
+        \begin{semiverbatim}
+            {\small
+
+            \$ sudo ./configure --enable-optimizations --disable-gil
+
+            }
+        \end{semiverbatim}
+    \end{alertblock}
+\end{frame}
+
+\section{Installation}
+\begin{frame}{Alternatives}
+    \begin{alertblock}{Update}
+        \begin{semiverbatim}
+            {\small
+
+            \$ sudo update-alternatives --install \ 
+
+            /usr/bin/python3 python /usr/bin/python3.13 1 \
+            
+            --slave /usr/bin/pip3 pip /usr/bin/pip3.13
+
+            \$ update-alternatives --config python
+            }
+        \end{semiverbatim}
+    \end{alertblock}
+    
+    \begin{alertblock}{Configure}
+        \begin{semiverbatim}
+            {\small
+            \$ update-alternatives --config python
+            }
+        \end{semiverbatim}
+    \end{alertblock}
+\end{frame}
+
+\end{document}

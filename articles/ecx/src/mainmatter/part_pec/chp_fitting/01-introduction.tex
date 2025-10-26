@@ -1,0 +1,31 @@
+\section{Introduction}
+
+In the course of the last 30 years, photoelectrochemical techniques have been 
+shown to be useful tools for characterizing oxidation layers. 
+Interdisciplinary theoretical underpinnings were built 
+\citep{morrison1980, vijh1969, stimming1986, diquarto1997, wouters2007} 
+such as the Gärtne-Butler model \citep{gartner1959,butler1977} which has been 
+proven to be a simple and robust model for the photocurrent generation. 
+Technical progresses were achieved, allowing to study oxide layers at 
+macroscopic, mesoscopic, and microscopic scales 
+\citep{benaboud2007, srisrual2011}, or in-situ in high temperature corrosion 
+conditions \citep{bojinov2002,skocic2016}.
+
+Up to now, for complex oxide scales formed of several p-type and n-type phases, 
+the complete description of the photocurrent energy spectra could not be achieved, 
+and only semi-quantitative and/or partial information could be obtained on the 
+nature of the phases present in the oxide layers. Recently, a new approach was 
+proposed by \citet{petit2013} to analyze the photocurrent spectra which was 
+applied to oxidized duplex stainless steels [9] as well as Ni-based and 
+Zr-based alloys oxidized in LWR conditions \citep{skocic2016}. 
+The numerical fitting procedure allowed to obtain high quality fits of the 
+experimental data. Nonetheless, the estimation of the confidence intervals 
+was not implemented.
+
+This paper presents the additional work carried out in order to implement the 
+estimation of the confidence intervals based on the fitting procedure 
+developed by \citet{petit2013}. The latter was rewritten in Python which is 
+an open source interpreted programming language. It is largely used in the 
+scientific community \citep{langtangen2012, millman2011, kiusalaas2010, oliphant2007} 
+and it comes with optimized libraries for numerical computations 
+\citep{vanderwalt2011,jones2020} and a high quality 2D visualization library \citep{hunter2007}.

@@ -1,0 +1,153 @@
+\section{Estimation of the confidence intervals}
+
+The scalar function to be minimized defined in \ref{eq:D} used for fitting 
+the photocurrent spectra ensures a fairly fast convergence towards the $3m$ 
+parameters defining the semiconductive contributions. However, the as-defined 
+scalar function could not be used for estimating the confidence intervals. 
+An alternative scalar function was defined to be computed with the optimal 
+parameters in order to estimate the confidence intervals. 
+The statistics of curve fitting shows that the confidence intervals can be 
+estimated using the least-squares method which can be applied to nonlinear 
+systems \citep{bevington2003,nocedal2006}.
+
+The least-squares regression uses the proprieties of the $\chi ^2$ distribution. 
+Consequently, of the experimental measurements of the photocurrent spectra are 
+assumed to follow the normal distribution. Moreover, the least-squares method 
+can be strictly applied only when the experimental variances are known for 
+each energy value of the photocurrent spectrum. Nonetheless, the latter are 
+not always known as it is the case for the photoelectrochemical characterizations. 
+Consequently, modifications of the relationships defined for the ideal 
+situation were necessary.
+
+\subsection{Ideal Situation}
+The equation \ref{eq:chi2} presents the scalar function $\chi ^2$ defined in 
+the least-squares method when the experimental variances $\sigmae ^2$ are known. 
+The residuals, $\epsilon$, weighted by the inverse of variances are given by 
+the equation \ref{eq:epsilon}. $\chi ^2$ is therefore defined as the sum of 
+the weighted residuals as illustrated by the equation \ref{eq:chi2_epsilon}
+
+\begin{equation}
+\begin{split}
+\chi ^2 = \sum _{\hv} \frac{\modi{\iphc-\iphe}^2}{\sigmae^2}
+\end{split}
+\label{eq:chi2}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\epsilon = \frac{\modi{\iphc-\iphe}^2}{\sigmae}
+\end{split}
+\label{eq:epsilon}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\chi ^2 = \sum _{\hv} \eps ^2
+\end{split}
+\label{eq:chi2_epsilon}
+\end{equation}
+
+$\gradX$ approaches zero when the parameter values are approaching the optimum values. 
+The covariance matrix of the fitted parameters, $\sigmap ^2$, can be estimated 
+with the Jacobian, $\je$, of the weighted residuals \citep{bevington2003} and 
+its expression is given by the equation \ref{eq:sigma_p}. For nonlinear systems, 
+as it is the case for the photocurrent, the equation \ref{eq:sigma_p} is a 
+first-order approximation. In fact, the approximation is valid because the 
+second-order terms are close to zero which avoids to compute the Hessian \citep{press2007}.
+
+\begin{equation}
+\begin{split}
+\sigmap = ( \je ^T \cdot \je ) ^{-1}
+\end{split}
+\label{eq:sigma_p}
+\end{equation}
+
+The diagonal terms of the covariance matrix represent the variances of the parameters. 
+The P\% confidence interval of the parameters, $CI_{P\%}$ is obtained by 
+multiplying the standard deviations with the student coefficient, $\tvp$, 
+with dof being the degree of freedom corresponding to number of experimental 
+points of the photocurrent, N, minus the number of parameter, 3m. 
+The probability $P\%$ was set to 95\%. The confidence intervals of the parameters 
+are given by the equation \ref{eq:CIP}.
+
+\begin{equation}
+\begin{split}
+CI_P &= \sqrt{ diag(\sigmap ^2)} \cdot \tvp \\
+dof &= N-3m
+\end{split}
+\label{eq:CIP}
+\end{equation}
+
+\subsection{Real Situation}
+The confidence interval can be estimated even when the experimental variances, 
+$\sigmae ^2$, are not known. However, it is necessary to modify the equations 
+presented in section 3.1. The objective is to define a scalar function, $S$, 
+which behaves like $\chi ^2$ with a constant scaling factor $g$. 
+The scalar function, $S$, is defined using real and positive weighting terms, 
+$w$, as shown in equation \ref{eq:chi2_epsilon}. Similarly to the Equation 6, 
+the $S$ function corresponds to the sum of the weighted residuals $\epsp$.
+
+\begin{equation}
+\begin{split}
+S &= \sum _{\hv} \frac{\modi{\iphc-\iphe}^2}{w ^2} \\
+%%\epsp &= \sum _{\hv} \frac{\modi{\iphc-\iphe}}{\sqrt{w}} \\
+%S & = \sum _{\hv} \epsp ^2 
+\end{split}
+\label{eq:S}
+\end{equation}
+
+The weighting terms are defined in order to isolate the scaling factor, $g$, 
+and the experimental variances such as illustrated by the equation \ref{eq:w}. 
+Therefore, the weighting terms are considered proportional to the experimental 
+variances.
+\begin{equation}
+	w=g \cdot \frac{1}{\sigmae ^2}
+	\label{eq:w}
+\end{equation}	
+	
+Combining equation \ref{eq:S} and equation \ref{eq:w}, the scalar function $S$ 
+becomes proportional to $\chi ^2$. Moreover, $\frac{\chi ^2}{\nu}$ goes to unity 
+when the optimum values of the parameters are reached. Consequently, 
+the scaling factor $g$ can be computed with the optimum value of $S$ as shown 
+by the equation \ref{eq:S_scaling_unity}.
+\begin{equation}
+\begin{split}
+S &=g \cdot \chi ^2 \\
+\frac{S}{\nu}&=g \cdot \frac{\chi ^2}{\nu} \simeq 1
+\end{split}
+\label{eq:S_scaling_unity}
+\end{equation}
+	
+
+The covariance matrix, $\sigmap$, can therefore be estimated with the scaling 
+factor $g$ and the Jacobian of the weighted residuals, $\jep$ as illustrated 
+by the equation \ref{eq:sigma_p}. The confidence intervals are then computed 
+using the Equation \ref{eq:CIP}.
+	
+\begin{equation}
+\begin{split}
+\sigmap ^{\prime 2} &= ( \jep ^T \cdot \jep ) ^{-1} \\
+\sigmap &= g \cdot \sigmap ^2
+\end{split}
+\label{eq:sigma_p}
+\end{equation}
+
+The choice of the weighted terms was made considering that the experimental 
+variances are proportional to average noise of the photocurrent modulus in 
+dark conditions, $\bar{\epsilon _d}$. It has been proposed that the variances 
+are smaller when the quantum yield is greater. 
+The latter is represented by the photocurrent corrected by the photon flux 
+normalized to its maximum value, $I_{ph,N}$. 
+The normalization ensures that the weighting terms have the same dimension as 
+the inverse of the variances as shown in equation \ref{eq:w_epsd}. 
+$S$ is therefore adimensional as it is the case for $\chi ^3$. 
+The Jacobian, $\jep$ is numerically estimated by fixing the finite difference 
+step to the squared root of the machine precision \citep{nocedal2006, press2007}.
+
+\begin{equation}
+\begin{split}
+\sigmae ^2 & \propto \frac{\bar{\epsilon _d}}{\vert I_{ph,N} \vert} \\
+w = & \frac{1}{\sigmae ^2} = g \cdot \frac{\vert I_{ph,N} \vert ^2}{\bar{\epsilon _d} ^2}
+\end{split}
+\label{eq:w_epsd}
+\end{equation}
