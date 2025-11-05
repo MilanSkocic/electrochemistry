@@ -29,7 +29,7 @@ url=$DEP_DIR/drawings/figures/png
 target=PEC-*.png
 cp -fv $url/$target ./src/figures/
 
-url=$DEP_DIR/drawings/references
+url=$DEP_DIR/bibfiles
 target=references.bib
 cp -fv $url/$target ./src/references.bib
 
