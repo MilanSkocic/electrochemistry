@@ -7,6 +7,7 @@ NCL=makeindex
 BUILD_FOLDER=build
 SRC_FOLDER=src
 BIN_FOLDER=pdf
+HTML_FOLDER=html
 
 .ONESHELL:
 
@@ -37,6 +38,7 @@ link:
 index: 
 	$(NCL) ./$(BUILD_FOLDER)/$(FNAME).nlo -s nomencl.ist -o ./$(BUILD_FOLDER)/$(FNAME).nls
 	$(NCL) ./$(BUILD_FOLDER)/$(FNAME).idx
+	cp ./$(BUILD_FOLDER)/$(FNAME).idx ./$(BUILD_FOLDER)/$(FNAME).4idx
 
 copy: 
 	cp -rf $(BUILD_FOLDER)/$(FNAME).pdf $(BIN_FOLDER)/$(OUTNAME).pdf
@@ -44,3 +46,5 @@ copy:
 clean:
 	rm -rf $(BUILD_FOLDER)/*
 	rm -rf $(BIN_FOLDER)/*
+	rm -rf $(HTML_FOLDER)/*
+
