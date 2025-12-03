@@ -8,10 +8,12 @@ BUILD_FOLDER=build
 SRC_FOLDER=src
 BIN_FOLDER=pdf
 HTML_FOLDER=html
+MK4BUILD=html.mk4
+MK4CFG=html.cfg
 
 .ONESHELL:
 
-.PHONY: all dirs tex biber bibtex index link copy clean
+.PHONY: all dirs tex biber bibtex index link copy clean html
 
 all: dirs tex biber index link copy
 
@@ -38,10 +40,13 @@ link:
 index: 
 	$(NCL) ./$(BUILD_FOLDER)/$(FNAME).nlo -s nomencl.ist -o ./$(BUILD_FOLDER)/$(FNAME).nls
 	$(NCL) ./$(BUILD_FOLDER)/$(FNAME).idx
-	cp ./$(BUILD_FOLDER)/$(FNAME).idx ./$(BUILD_FOLDER)/$(FNAME).4idx
 
 copy: 
 	cp -rf $(BUILD_FOLDER)/$(FNAME).pdf $(BIN_FOLDER)/$(OUTNAME).pdf
+	cp ./$(BUILD_FOLDER)/$(FNAME).idx ./$(BUILD_FOLDER)/$(FNAME).4idx
+
+html: 
+	make4ht -c $(MK4CFG) -d $(HTML_FOLDER) -B $(BUILD_FOLDER) -e $(MK4BUILD) $(SRC_FOLDER)/$(FNAME).tex -a info
 
 clean:
 	rm -rf $(BUILD_FOLDER)/*
